@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — hologram fans, holoboxes and the 3dNakedEye service | 3dNakedEye</title>
+<meta name="description" content="Fifty-eight answers about 3D hologram fans and holoboxes, content production, safety and maintenance, how the 3dNakedEye marketplace works, membership and your account — in English, 繁體中文, 简体中文 and ไทย.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg><span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <div class="page-head">
+    <span class="eyebrow" data-i18n="faq.eyebrow">Frequently asked questions</span>
+    <h1 data-i18n="faq.title">Hologram, holobox and the 3dNakedEye service — answered</h1>
+    <p class="lede" data-i18n="faq.lede">Fifty-eight answers across five groups.</p>
+  </div>
+
+  <div class="card faq-tools">
+    <div class="faq-search">
+      <label class="sr-only" for="faqSearch" data-i18n="faq.search_ph">Search</label>
+      <input type="search" id="faqSearch" placeholder="Search: hologram, black background, refund, landlord share…">
+      <span class="pill pill--muted" id="faqCount">—</span>
+    </div>
+    <div class="row row--wrap faq-actions">
+      <button class="btn btn--quiet btn--sm no-print" type="button" id="faqExpand" data-i18n="faq.expand">Expand all</button>
+      <button class="btn btn--quiet btn--sm no-print" type="button" id="faqCollapse" data-i18n="faq.collapse">Collapse all</button>
+      <button class="btn btn--quiet btn--sm no-print" type="button" id="faqPrint" data-i18n="faq.print">Print or save as PDF</button>
+    </div>
+    <div class="tabs" id="faqTabs" aria-label="FAQ groups"></div>
+  </div>
+
+  <div id="faqGroups" class="faq-groups"></div>
+
+  <section class="card faq-handoff">
+    <div>
+      <h2 data-i18n="faq.still_title">Still not answered?</h2>
+      <p data-i18n="faq.still_lede">Ask the assistant, or message the team.</p>
+      <p class="tiny muted"><span data-i18n="foot.hours">Hours</span>: <span id="faqHours"></span> ·
+        WhatsApp <span id="faqWaNumber"></span></p>
+    </div>
+    <div class="row row--wrap no-print">
+      <button class="btn btn--primary" type="button" id="faqAsk" data-i18n="faq.ask_ai">Ask the assistant</button>
+      <a class="btn btn--ghost" id="faqWhats" href="#" target="_blank" rel="noopener" data-i18n="faq.whatsapp">Message us on WhatsApp</a>
+      <a class="btn btn--ghost" id="faqEmail" href="#" data-i18n="foot.email">Email</a>
+      <a class="btn btn--quiet" href="contact.html" data-i18n="faq.enquiry">Send an enquiry</a>
+    </div>
+  </section>
+
+  <div class="note" id="faqSource"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom" style="border:0;margin:0">
+    <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+    <span><a href="contact.html" data-i18n="nav.contact">Contact</a> · <a href="docs.html" data-i18n="nav.docs">Platform &amp; API</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+<script src="assets/js/page-faq.js"></script>
+</body>
+</html>

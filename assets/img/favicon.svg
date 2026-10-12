@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="3dNakedEye">
+  <title>3dNakedEye</title>
+  <defs>
+    <linearGradient id="dne-fav" x1="6" y1="10" x2="58" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#35d0ff"/>
+      <stop offset=".55" stop-color="#0b5fff"/>
+      <stop offset="1" stop-color="#6b4dff"/>
+    </linearGradient>
+  </defs>
+  <!-- Simplified for 16 px: a bold eye, a bold cube, nothing else. -->
+  <path d="M4 32c8.6-12.4 18.2-18.4 28-18.4S51.4 19.6 60 32c-8.6 12.4-18.2 18.4-28 18.4S12.6 44.4 4 32Z"
+        fill="none" stroke="url(#dne-fav)" stroke-width="4.6" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="12.6" fill="#0b5fff" opacity=".16"/>
+  <path d="M32 21.4 41.4 26.8 32 32.2 22.6 26.8Z" fill="#cdefff"/>
+  <path d="M22.6 26.8 32 32.2v11.2l-9.4-5.4Z" fill="#0b5fff"/>
+  <path d="M41.4 26.8v11.2L32 43.4V32.2Z" fill="#6b4dff"/>
+</svg>

@@ -1,0 +1,67 @@
+From: no-reply@3dnakedeye.example
+To: commercialisation.ai@gmail.com
+Subject: 3dNakedEye enquiry PROBE-CALC — PROBE-CALC
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<pre style="font:13px/1.6 ui-monospace,Menlo,Consolas,monospace">New 3dNakedEye enquiry PROBE-CALC
+
+Name:      PROBE-CALC
+Company:   —
+Email:     probe@3dnakedeye.example
+Phone:     —
+Role:      —
+Market:    hk
+Interests: hologram_buy
+Device:    —
+Budget:    —
+Timeline:  —
+Channel:   —
+Language:  en
+
+Message:
+PASS — 42/42
+ok   the calculator renders
+ok   a heading and a lede are present
+ok   the source document is named on the page
+ok   four statistics are drawn
+ok   the statistics are 4 classes, 5 models and 50 units
+ok   five model rows are drawn
+ok   the rows are P46, P65, P80, A80 and A300
+ok   P46 is shown against the 56 cm class
+ok   P65 is shown against the 65 cm class
+ok   P80 is shown against the 80 cm class
+ok   A80 is outdoors in the same 80 cm class as P80
+ok   A300 is outdoors and marked as outside the table
+ok   A300 is never given a fabricated class or spacing
+ok   the default answer is drawn (units, size, class, unit size, spacing, arithmetic)
+ok   the default result is 9 units of the 65 cm class
+ok   the arithmetic is printed and is the sheet’s formula
+ok   switching to the 100 cm class recalculates
+ok   9 units of the 100 cm class is 6.68 m, as the sheet shows
+ok   two units of the 100 cm class is 1.71 m, as the sheet shows
+ok   fifty units of the 100 cm class is 35.79 m, the sheet’s widest row
+ok   the preview draws one tile per unit
+ok   only the input for the chosen mode is visible, and the other is really hidden
+ok   width mode shows the wall input
+ok   3 m of 65 cm units needs 7 units covering 3.434 m
+ok   an exact width gives the exact count (1.578 m → 3 units)
+ok   a width past the table stops at 50 units and says so
+ok   the printed table has 50 rows (got 50)
+ok   the table columns are the four classes plus the unit count
+ok   row 1 is one display per class: 0.56 · 0.65 · 0.77 · 1
+ok   row 2 adds one spacing: 0.96 · 1.114 · 1.32 · 1.71
+ok   row 50 is the sheet’s widest: 20.16 · 23.386 · 27.72 · 35.79
+ok   the sheet’s closing line is on the page
+ok   A300 is routed to the technical-solution section
+ok   the page links to the area calculator, the price list and the enquiry form
+ok   no raw dictionary key is visible
+ok   the page never mentions the manufacturer
+ok   the calculator re-renders in Traditional Chinese
+ok   the model rows are translated
+ok   no raw key is left in Traditional Chinese
+ok   the calculator re-renders in Thai
+ok   it comes back to English with no key left behind
+ok   the calculation survives the round trip with its state intact
+
+Received:  2026-09-26T09:46:45.956Z</pre>

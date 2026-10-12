@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explainer video — DSPs, ad-platform benefits and how advertisers and landlords both win | 3dNakedEye</title>
+<meta name="description" content="A 146-second, 11-chapter explainer of the AI OOH marketplace: what a demand-side platform does, what an online ad platform gives an advertiser, what landlords gain, how location-based services pull and push, and the roadmap to programmatic DOOH — plus benefits calculators, the full narration script and a third-party reference library.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg><span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="video.eyebrow">Explainer video</span>
+      <h1 data-i18n="video.title">Two sides, one transaction: how advertisers and landlords both win</h1>
+<p class="lede" data-i18n="video.lede">A 146-second, 11-chapter walkthrough of the marketplace — what a DSP does, what an online ad platform gives an advertiser, what a location owner gets, how location-based services pull and push, and the pipeline that connects them.</p>
+      <div class="row" style="margin-top:14px">
+<span class="chip" data-i18n="video.meta_length">146 seconds</span>
+        <span class="chip" data-i18n="video.meta_langs">Narration in 3 languages</span>
+<span class="chip" data-i18n="video.meta_chapters">11 chapters</span>
+        <span class="chip" data-i18n="video.meta_script">Full script included</span>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start">
+      <div class="card" id="videoHost">
+        <!-- Player is rendered by page-video.js so the same timeline can run
+             either as the built-in animated explainer or as your own file. -->
+      </div>
+
+      <aside class="stack">
+        <div class="card card--tight">
+          <h3 class="card__title" data-i18n="video.chapters">Chapters</h3>
+          <ol class="chapters" id="videoChapters"></ol>
+        </div>
+        <div class="card card--tight">
+          <h3 class="card__title" data-i18n="video.assets">Take the material with you</h3>
+          <p class="card__sub" data-i18n="video.assets_sub">Everything here can be reused for a sales deck, a landlord pitch or a paid social cut.</p>
+          <div class="stack" style="margin-top:12px">
+            <button class="btn btn--ghost btn--sm" type="button" id="dlScript" data-i18n="video.dl_script">Download narration script (.txt)</button>
+            <button class="btn btn--ghost btn--sm" type="button" id="dlShot" data-i18n="video.dl_shot">Download shot list (.txt)</button>
+            <button class="btn btn--ghost btn--sm" type="button" id="dlBenefits" data-i18n="video.dl_benefits">Download benefit summary (.txt)</button>
+            <a class="btn btn--quiet btn--sm" href="docs.html#video" data-i18n="video.how_to_publish">How to publish your own video</a>
+          </div>
+        </div>
+        <div class="card card--tight">
+          <h3 class="card__title" data-i18n="video.caption_title">Captions</h3>
+          <p class="tiny muted" data-i18n="video.caption_note">Subtitles follow the built-in language switcher. Turn the voice-over on to hear the narration read by the browser in the selected language.</p>
+          <div class="row" style="margin-top:10px">
+            <label class="switch"><input type="checkbox" id="optSubs" checked> <span data-i18n="video.subs">Subtitles</span></label>
+            <label class="switch"><input type="checkbox" id="optVoice" checked> <span data-i18n="video.voice">Voice-over</span></label>
+          </div>
+          <div class="form-row" style="margin-top:12px">
+            <label for="optVoicePick" data-i18n="video.voice_label">Narration voice</label>
+            <select id="optVoicePick"></select>
+            <span class="hint" id="optVoiceState" aria-live="polite"></span>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn btn--ghost btn--sm" type="button" id="btnVoiceTest" data-i18n="video.voice_test">Test voice</button>
+          </div>
+          <p class="tiny muted" style="margin-top:10px" data-i18n="video.voice_hint">Traditional Chinese is narrated in Cantonese, never Mandarin.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ BENEFITS ============ -->
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="video.benefits_eyebrow">Benefits in detail</span>
+        <h2 data-i18n="video.benefits_title">What each side actually gets</h2>
+        <p data-i18n="video.benefits_lede">The marketplace only works if both sides are better off than the phone-and-PDF way of selling out-of-home advertising.</p>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <div class="card">
+          <span class="pill pill--info" data-i18n="parties.advertiser">Advertiser</span>
+          <h3 class="card__title" style="margin-top:12px" data-i18n="video.adv_title">Advertiser benefits</h3>
+          <div class="stack" id="advBenefits"></div>
+          <div class="panel panel--accent" style="margin-top:18px">
+            <h4 class="card__title" style="font-size:.95rem" data-i18n="video.adv_calc">What will my budget buy?</h4>
+            <div class="range-row" style="margin-top:10px">
+              <label for="advBudget" data-i18n="video.adv_budget">Campaign budget (HK$)</label>
+              <input type="range" id="advBudget" min="1000" max="60000" step="500" value="10000">
+              <span class="hint"><span id="advBudgetOut">HK$10,000</span></span>
+            </div>
+            <div class="range-row">
+              <label for="advDays" data-i18n="video.adv_days">Campaign length (days)</label>
+              <input type="range" id="advDays" min="1" max="30" step="1" value="7">
+              <span class="hint"><span id="advDaysOut">7</span></span>
+            </div>
+            <div id="advCalcOut" style="margin-top:12px"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill pill--warn" data-i18n="parties.landlord">Landlord / owner</span>
+          <h3 class="card__title" style="margin-top:12px" data-i18n="video.ll_title">Landlord benefits</h3>
+          <div class="stack" id="llBenefits"></div>
+          <div class="panel panel--accent" style="margin-top:18px">
+            <h4 class="card__title" style="font-size:.95rem" data-i18n="video.ll_calc">What could my location earn?</h4>
+            <div class="range-row" style="margin-top:10px">
+              <label for="llDevices" data-i18n="video.ll_devices">Devices installed</label>
+              <input type="range" id="llDevices" min="1" max="8" step="1" value="2">
+              <span class="hint"><span id="llDevicesOut">2</span></span>
+            </div>
+            <div class="range-row">
+              <label for="llOcc" data-i18n="video.ll_occ">Average occupancy (%)</label>
+              <input type="range" id="llOcc" min="10" max="95" step="5" value="60">
+              <span class="hint"><span id="llOccOut">60%</span></span>
+            </div>
+            <div id="llCalcOut" style="margin-top:12px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIPELINE ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="video.pipeline_eyebrow">The pipeline</span>
+        <h2 data-i18n="video.pipeline_title">From brief to proof of play</h2>
+      </div>
+      <div class="flow" id="pipelineFlow"></div>
+      <div class="grid grid--3" style="margin-top:24px">
+        <div class="card"><h3 data-i18n="video.pipe_1">Nothing runs without consent</h3>
+          <p data-i18n="video.pipe_1_d">The location owner approves every campaign, can block entire categories and keeps protected slots for building notices.</p></div>
+        <div class="card"><h3 data-i18n="video.pipe_2">Nothing plays without a record</h3>
+          <p data-i18n="video.pipe_2_d">Each device logs scheduled versus actual plays, completion, uptime and errors — the proof-of-play report an advertiser can audit.</p></div>
+        <div class="card"><h3 data-i18n="video.pipe_3">Nothing is claimed without a label</h3>
+          <p data-i18n="video.pipe_3_d">Verified delivery, modelled exposure and measured engagement are reported separately, never blended into a single "views" number.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DSP / PLATFORM CONTEXT ============ -->
+  <section class="section" id="context">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="video.ctx_eyebrow">Background for the video</span>
+        <h2 data-i18n="video.ctx_title">DSPs, ad platforms and where 3dNakedEye fits</h2>
+        <p data-i18n="video.ctx_lede">The explainer sits inside a wider programmatic market. These three cards are the context a brand or a landlord usually asks about, in the same order the video covers them.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <span class="pill pill--info" data-i18n="video.dsp_badge">Chapter 3</span>
+          <h3 class="card__title" style="margin-top:12px" data-i18n="video.dsp_title">What a DSP actually is</h3>
+          <p data-i18n="video.dsp_body">A demand-side platform is the buying cockpit: an advertiser or agency sets budget, audience and goals, and the DSP decides which impressions to buy across many publishers and formats — display, video, CTV, audio and digital out-of-home. The Trade Desk is the reference independent DSP: it does not own inventory, so optimisation is not tilted towards its own media.</p>
+          <ul class="kpi-list">
+            <li><span data-i18n="video.dsp_f1">Who buys</span><b data-i18n="video.dsp_f1v">Brands and agencies</b></li>
+            <li><span data-i18n="video.dsp_f2">What it optimises</span><b data-i18n="video.dsp_f2v">Audience and outcome</b></li>
+            <li><span data-i18n="video.dsp_f3">Inventory</span><b data-i18n="video.dsp_f3v">Borrowed, not owned</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill pill--info" data-i18n="video.pl_badge">Chapter 4</span>
+          <h3 class="card__title" style="margin-top:12px" data-i18n="video.pl_title">What an online ad platform gives you</h3>
+          <p data-i18n="video.pl_body">Self-service access to inventory, one workflow from creative to payment, data-driven targeting, automated scheduling and pacing, and measurement you can audit. Those are exactly the benefits the video walks through before it explains the two-sided twist.</p>
+          <ul class="kpi-list">
+            <li><span data-i18n="video.pl_f1">Access</span><b data-i18n="video.pl_f1v">Self-service, no sales call</b></li>
+            <li><span data-i18n="video.pl_f2">Speed</span><b data-i18n="video.pl_f2v">Live in an afternoon</b></li>
+            <li><span data-i18n="video.pl_f3">Proof</span><b data-i18n="video.pl_f3v">Device-level play log</b></li>
+          </ul>
+        </div>
+        <div class="card card--glow">
+          <span class="pill pill--ok" data-i18n="video.fit_badge">Where we start</span>
+          <h3 class="card__title" style="margin-top:12px" data-i18n="video.fit_title">3dNakedEye: the two-sided marketplace first</h3>
+          <p data-i18n="video.fit_body">Reproducing a full DSP on day one would be the wrong bet. 3dNakedEye starts as a self-service marketplace for verified screens and hologram displays, with landlords approving every campaign — and only then opens the API to programmatic demand with OpenRTB-compatible DOOH inventory.</p>
+          <ul class="kpi-list">
+            <li><span data-i18n="video.fit_f1">Phase 1–2</span><b data-i18n="video.fit_f1v">Fixed price · share of voice</b></li>
+            <li><span data-i18n="video.fit_f2">Phase 3</span><b data-i18n="video.fit_f2v">CPM · PMP · OpenRTB</b></li>
+            <li><span data-i18n="video.fit_f3">Differentiation</span><b data-i18n="video.fit_f3v">AI creative + hologram inventory</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REFERENCE LIBRARY ============ -->
+  <section class="section section--band" id="references">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="video.refs_eyebrow">Reference videos</span>
+        <h2 data-i18n="video.refs_title">Third-party material on DSPs, programmatic and DOOH</h2>
+        <p data-i18n="video.refs_lede">Curated starting points rather than our own claims: official channels and industry guidance. Each card links to the source, and to a YouTube search for the topic so the reference keeps working even if a channel reorganises.</p>
+      </div>
+      <div class="grid grid--3" id="videoRefs"></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="card card--glow row row--between" style="padding:28px">
+        <div>
+          <h2 style="margin:0 0 6px" data-i18n="video.cta_title">Put your location on the map — or your campaign on a screen</h2>
+          <p style="margin:0" data-i18n="video.cta_lede">Both sides start from the same marketplace, with the same prices and the same proof.</p>
+        </div>
+        <div class="row">
+          <a class="btn btn--primary btn--lg" href="marketplace.html" data-i18n="hero.cta_browse">Browse advertising locations</a>
+          <a class="btn btn--ghost btn--lg" href="landlord.html#register" data-i18n="hero.cta_list">List your location</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom" style="border:0;margin:0">
+    <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+    <span><a href="docs.html" data-i18n="nav.docs">Platform &amp; API</a> · <a href="pricing.html" data-i18n="nav.pricing">Pricing</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+<script src="assets/js/page-video.js"></script>
+</body>
+</html>

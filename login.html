@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — advertiser and landlord dashboards | 3dNakedEye</title>
+<meta name="description" content="One sign-in for both sides of the 3dNakedEye marketplace: advertisers reach campaign, reporting and invoice tools; landlords reach sites, devices, approvals and revenue statements. Demo accounts included.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg><span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <div class="page-head">
+    <span class="eyebrow" data-i18n="auth.eyebrow">Accounts</span>
+    <h1 data-i18n="auth.title">Sign in to your dashboard</h1>
+    <p class="lede" data-i18n="auth.lede">Advertisers and landlords share one sign-in page.</p>
+  </div>
+
+  <div class="grid grid--2" style="align-items:start">
+    <div class="card" id="authCard"></div>
+
+    <div>
+      <div class="card">
+        <h2 class="card__title" data-i18n="login.inside">What is inside each dashboard</h2>
+        <div class="grid grid--2" style="margin-top:10px">
+          <div>
+            <h3 class="tiny-head" data-i18n="login.adv_title">Advertiser dashboard</h3>
+            <ul class="kpi-list">
+              <li><span data-i18n="login.adv_1">Campaigns</span></li>
+              <li><span data-i18n="login.adv_2">Proof of play</span></li>
+              <li><span data-i18n="login.adv_3">Invoices</span></li>
+            </ul>
+            <a class="btn btn--quiet btn--sm" href="advertiser.html" data-i18n="nav.dashboard">Dashboard</a>
+          </div>
+          <div>
+            <h3 class="tiny-head" data-i18n="login.ll_title">Landlord dashboard</h3>
+            <ul class="kpi-list">
+              <li><span data-i18n="login.ll_1">Sites and devices</span></li>
+              <li><span data-i18n="login.ll_2">Approvals</span></li>
+              <li><span data-i18n="login.ll_3">Statements</span></li>
+            </ul>
+            <a class="btn btn--quiet btn--sm" href="landlord.html" data-i18n="nav.dashboard">Dashboard</a>
+          </div>
+        </div>
+        <p class="tiny muted" style="margin-top:12px" data-i18n="login.advice">Not sure which side you are?</p>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3 data-i18n="mem.title">Membership</h3>
+        <p class="tiny muted" data-i18n="mem.lede">Membership is optional.</p>
+        <div class="row row--wrap">
+          <a class="btn btn--ghost btn--sm" href="membership.html" data-i18n="nav.membership">Membership</a>
+          <a class="btn btn--quiet btn--sm" href="faq.html#faq-acc_login" data-i18n="faq.acc_login.q">Where do I sign in?</a>
+          <a class="btn btn--quiet btn--sm" href="contact.html" data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom" style="border:0;margin:0">
+    <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+    <span><a href="faq.html" data-i18n="nav.faq">FAQ</a> · <a href="contact.html" data-i18n="nav.contact">Contact</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+</body>
+</html>

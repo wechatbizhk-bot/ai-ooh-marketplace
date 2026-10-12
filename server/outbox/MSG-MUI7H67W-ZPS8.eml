@@ -1,0 +1,79 @@
+From: no-reply@3dnakedeye.example
+To: commercialisation.ai@gmail.com
+Subject: 3dNakedEye enquiry PROBE-AFF — PROBE-AFF
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<pre style="font:13px/1.6 ui-monospace,Menlo,Consolas,monospace">New 3dNakedEye enquiry PROBE-AFF
+
+Name:      PROBE-AFF
+Company:   —
+Email:     probe@3dnakedeye.example
+Phone:     —
+Role:      —
+Market:    hk
+Interests: partnership
+Device:    —
+Budget:    —
+Timeline:  —
+Channel:   —
+Language:  en
+
+Message:
+PASS — 54/54
+ok   the page renders
+ok   a heading and a lede are present
+ok   the source note is printed
+ok   four statistics are drawn with values
+ok   the chain is three steps
+ok   the steps are tracking ID, cookie, attribution and payout
+ok   four parties are shown
+ok   the parties include the network and the landing page
+ok   three channels are shown
+ok   the channels name social, content and messaging
+ok   six rules are listed
+ok   three network options are listed
+ok   the demo panel is rendered
+ok   a tracked link is built with ref, cid and channel
+ok   no click is attributed before one is simulated
+ok   the log starts empty
+ok   the click is recorded and attributed
+ok   the click log now has a row
+ok   the panel shows the partner, the cid, the click time and the expiry
+ok   8 % of HK$4,800 is shown as HK$384
+ok   the flat-fee model pays HK$150 whatever the order
+ok   12 % of HK$4,800 is HK$576
+ok   switching off “a completed order” explains that the order earns nothing
+ok   switching it back on restores the commission
+ok   a click past its window is no longer attributed
+ok   the page explains that the window has passed
+ok   a new click attributes again
+ok   the cookie window can be set to 90 days
+ok   clearing the cookie empties the attribution and the log
+ok   arriving on ?ref=TEST-001 records the click on that page
+ok   the click carries the channel from utm_source
+ok   the click window is the default 30 days
+ok   the landing page is recorded, not invented
+ok   an order on that page attributes to the partner who sent the link
+ok   no raw dictionary key is visible
+ok   the networks are labelled as third-party
+ok   the browser demo offers share buttons
+ok   the share buttons carry the tracked link
+ok   the tracked code travels inside the share text
+ok   the live console panel is rendered
+ok   the console reports the API as connected with its schema version
+ok   the console starts with no numbers
+ok   registering through the console returns a partner code
+ok   the API confirms the partner in the console
+ok   the console offers the same share buttons for the live link
+ok   a malformed email is refused and reported in the console
+ok   the console shows the recorded click
+ok   the console shows the order and the commission
+ok   the API reports the same partner with at least one click and one order
+ok   the page re-renders in Traditional Chinese
+ok   the demo panel survives the switch
+ok   no raw key is left in Traditional Chinese
+ok   the page re-renders in Thai
+ok   it comes back to English with no key left behind
+
+Received:  2026-09-26T09:47:09.884Z</pre>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3dNakedEye — AI OOH Marketplace: create, book, pay and measure location advertising</title>
+<meta name="description" content="Two-sided AI-powered DOOH marketplace. Advertisers create campaigns with AI, book verified screens and hologram displays, pay online and measure results. Landlords register locations, approve campaigns and earn recurring revenue.">
+<meta name="theme-color" content="#050b16">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<meta property="og:title" content="3dNakedEye — AI OOH Marketplace">
+<meta property="og:description" content="Create, book, pay for and measure location-based advertising — from one platform.">
+<meta property="og:type" content="website">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg>
+        <span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow" data-i18n="hero.eyebrow">Two-sided DOOH marketplace</span>
+        <h1 data-i18n-html="hero.title">Create, book, pay for and <em>measure</em> location-based advertising — from one platform.</h1>
+        <p class="lede" data-i18n="hero.lede">AI OOH Marketplace connects advertisers with landlords and location owners. Generate the creative with AI, book verified screens and hologram displays by the day, pay online, and prove that every spot actually played.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="marketplace.html" data-i18n="hero.cta_browse">Browse advertising locations</a>
+          <a class="btn btn--ghost btn--lg" href="landlord.html#register" data-i18n="hero.cta_list">List your location</a>
+        </div>
+        <div class="hero__trust">
+          <div><b data-stat="locations">—</b><span data-i18n="hero.trust_locations">verified locations</span></div>
+          <div><b data-stat="devices">—</b><span data-i18n="hero.trust_devices">devices online</span></div>
+          <div><b data-stat="plays">—</b><span data-i18n="hero.trust_plays">plays logged (30 d)</span></div>
+          <div><b data-stat="districts">—</b><span data-i18n="hero.trust_districts">districts covered</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="card hero-visual__card">
+          <div class="hero-visual__holo">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <radialGradient id="hv1"><stop offset="0" stop-color="#8ef0ff"/><stop offset="1" stop-color="#6b4dff" stop-opacity="0"/></radialGradient>
+                <linearGradient id="hv2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35d0ff"/><stop offset=".55" stop-color="#0b5fff"/><stop offset="1" stop-color="#6b4dff"/></linearGradient>
+                <linearGradient id="hv3" x1="76" y1="72" x2="124" y2="118"><stop offset="0" stop-color="#e8f7ff"/><stop offset="1" stop-color="#9fe8ff"/></linearGradient>
+              </defs>
+              <circle cx="100" cy="96" r="74" fill="url(#hv1)" opacity=".32"/>
+              <!-- the 3dNakedEye motif: an eye whose iris floats an isometric cube -->
+              <path d="M28 96c17-25 36-37 72-37s55 12 72 37c-17 25-36 37-72 37s-55-12-72-37Z"
+                    fill="none" stroke="url(#hv2)" stroke-width="3" stroke-linejoin="round" opacity=".95"/>
+              <circle cx="100" cy="96" r="27" fill="url(#hv2)" opacity=".14"/>
+              <circle cx="100" cy="96" r="27" fill="none" stroke="url(#hv2)" stroke-width="1.6" opacity=".5"/>
+              <path d="M100 72 119 83 100 94 81 83Z" fill="url(#hv3)"/>
+              <path d="M81 83 100 94v22l-19-11Z" fill="#0b5fff"/>
+              <path d="M119 83v22l-19 11V94Z" fill="#6b4dff"/>
+              <path d="M131 60a34 34 0 0 1 9 20" fill="none" stroke="#ff5470" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+              <circle cx="88" cy="84" r="3.4" fill="#ffffff" opacity=".85"/>
+              <path d="M40 168h120" stroke="#35d0ff" stroke-width="1.4" opacity=".5"/>
+              <path d="M54 178h92" stroke="#35d0ff" stroke-width="1.4" opacity=".3"/>
+            </svg>
+          </div>
+          <div class="hero-visual__rows">
+            <div class="hero-flow__step"><i>1</i><span data-i18n="hero.step1">Upload product photos or finished creative</span></div>
+            <div class="hero-flow__step"><i>2</i><span data-i18n="hero.step2">AI generates screen, social and hologram versions</span></div>
+            <div class="hero-flow__step"><i>3</i><span data-i18n="hero.step3">Book locations by the day, pay online in minutes</span></div>
+            <div class="hero-flow__step"><i>4</i><span data-i18n="hero.step4">Landlord approves, devices play, proof-of-play is logged</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPLAINER VIDEO ================= -->
+  <section class="section">
+    <div class="wrap grid grid--2" style="gap:34px;align-items:center">
+      <a class="video-teaser" href="video.html" id="videoTeaser">
+        <span class="video-teaser__art" id="teaserArt"></span>
+        <span class="video-teaser__play" aria-hidden="true"><i>▶</i></span>
+<span class="video-teaser__badge chip" data-i18n="video.badge">2.5-minute explainer</span>
+        <span class="video-teaser__cap" data-i18n="video.teaser_cap">How advertisers and landlords both win — narrated in three languages</span>
+      </a>
+      <div>
+        <span class="eyebrow" data-i18n="video.eyebrow">Explainer video</span>
+        <h2 data-i18n="video.teaser_title">Two sides, one transaction</h2>
+<p data-i18n="video.teaser_lede">Watch the 146-second walkthrough: what a DSP does, what an ad platform gives an advertiser, what a location owner gets, and how location-based services pull and push.</p>
+        <div class="benefit-grid" style="grid-template-columns:1fr;margin:18px 0">
+          <div class="benefit"><span class="benefit__icon" aria-hidden="true">●</span>
+            <div><h4 data-i18n="video.adv_b1">Book in minutes, not weeks</h4>
+              <p data-i18n="video.adv_b1_d">Pick locations on a live availability map, see the price instantly and pay online — no rate-card emails and no bank-transfer chase.</p></div></div>
+          <div class="benefit"><span class="benefit__icon" aria-hidden="true">●</span>
+            <div><h4 data-i18n="video.adv_b3">Proof of play, not a promise</h4>
+              <p data-i18n="video.adv_b3_d">Scheduled versus actual plays, uptime, completion and QR redemptions — reported separately from modelled impressions.</p></div></div>
+          <div class="benefit benefit--ll"><span class="benefit__icon" aria-hidden="true">◆</span>
+            <div><h4 data-i18n="video.ll_b1">No capital cost to the location</h4>
+              <p data-i18n="video.ll_b1_d">The platform supplies, installs and maintains the screen or hologram device; the venue provides the position and the power.</p></div></div>
+          <div class="benefit benefit--ll"><span class="benefit__icon" aria-hidden="true">◆</span>
+            <div><h4 data-i18n="video.ll_b3">You keep editorial control</h4>
+              <p data-i18n="video.ll_b3_d">Approve each campaign, block whole categories, protect notice slots and set a floor price the platform cannot discount below.</p></div></div>
+        </div>
+        <div class="row">
+          <a class="btn btn--primary" href="video.html" data-i18n="video.watch">Watch the explainer</a>
+          <a class="btn btn--ghost" href="video.html" data-i18n="video.benefits_cta">See the benefit numbers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THREE PARTIES ================= -->
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="section-head section-head--center">
+        <span class="eyebrow" data-i18n="parties.eyebrow">One platform, three parties</span>
+        <h2 data-i18n="parties.title">Built for the way out-of-home advertising is actually sold</h2>
+        <p data-i18n="parties.lede">Every transaction keeps a single structured record: inventory, price, creative, approval, payment, playback and settlement.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card card--glow">
+          <div class="row"><span class="avatar">A</span><h3 data-i18n="parties.advertiser">Advertiser</h3></div>
+          <p data-i18n="parties.advertiser_body">Create campaigns, pick locations on a map, generate AI creative, pay online and review verified delivery, estimated exposure and direct engagement.</p>
+          <p><a href="advertiser.html" data-i18n="cta.open_portal">Open portal →</a></p>
+        </article>
+        <article class="card card--glow">
+          <div class="row"><span class="avatar">L</span><h3 data-i18n="parties.landlord">Landlord / location owner</h3></div>
+          <p data-i18n="parties.landlord_body">Register locations and devices, set minimum prices and content restrictions, approve each campaign, and earn a transparent share of media revenue.</p>
+          <p><a href="landlord.html" data-i18n="cta.open_portal">Open portal →</a></p>
+        </article>
+        <article class="card card--glow">
+          <div class="row"><span class="avatar">O</span><h3 data-i18n="parties.operator">Platform operator</h3></div>
+          <p data-i18n="parties.operator_body">Verify inventory, moderate ads and AI content, run scheduling and playback, settle landlord payouts, monitor device health and audit everything.</p>
+          <p><a href="operator.html" data-i18n="cta.open_portal">Open portal →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKFLOW ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="flow.eyebrow">Self-service booking</span>
+        <h2 data-i18n="flow.title">Upload → Generate → Edit → Preview → Book → Pay → Publish</h2>
+        <p data-i18n="flow.lede">No sales call needed. Advertisers can complete the whole cycle online, while AI generation stays optional — professional teams can upload finished content.</p>
+      </div>
+      <div class="flow" id="flowStrip"></div>
+      <div class="grid grid--3" style="margin-top:26px">
+        <div class="card"><h3 data-i18n="flow.map_title">Choose by map and filters</h3>
+          <p data-i18n="flow.map_body">Filter by district, venue type, estimated audience, device type (screen or hologram), available dates, operating hours and price.</p></div>
+        <div class="card"><h3 data-i18n="flow.avail_title">Real availability, real price</h3>
+          <p data-i18n="flow.avail_body">Share of voice, weekly and monthly packages are priced instantly. Minimum prices set by the landlord are respected automatically.</p></div>
+        <div class="card"><h3 data-i18n="flow.proof_title">Proof, not promises</h3>
+          <p data-i18n="flow.proof_body">Verified plays, uptime and completion are separated from modelled impressions, so you never over-claim audiences.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARKETPLACE PREVIEW ================= -->
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="row row--between" style="margin-bottom:22px">
+        <div class="section-head" style="margin:0">
+          <span class="eyebrow" data-i18n="preview.eyebrow">Live inventory</span>
+          <h2 data-i18n="preview.title">Verified screens and hologram displays across Hong Kong</h2>
+        </div>
+        <a class="btn btn--ghost" href="marketplace.html" data-i18n="preview.cta">See all locations</a>
+      </div>
+      <div class="grid grid--sidebar">
+        <div class="map-panel" id="homeMap" aria-live="polite"></div>
+        <div class="loc-grid" id="featuredGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AVAILABILITY / LBS ================= -->
+  <section class="section" id="availability">
+    <div class="wrap">
+      <div class="row row--between" style="margin-bottom:20px">
+        <div class="section-head" style="margin:0">
+          <span class="eyebrow" data-i18n="avail.eyebrow">Live availability map</span>
+          <h2 data-i18n="avail.title">Which locations are free for your dates?</h2>
+          <p data-i18n="avail.lede">Every verified site is plotted and colour-coded for the campaign window — available, partly booked or fully booked. Use your own location to see what is within reach.</p>
+        </div>
+        <a class="btn btn--ghost" href="marketplace.html" data-i18n="avail.open_map">Open the full LBS map</a>
+      </div>
+      <div class="seg" id="homeMarketTabs" style="margin-bottom:16px"></div>
+      <div class="stat-grid" id="homeAvailStats" style="margin-bottom:18px"></div>
+      <div class="map-panel" id="homeLbs"></div>
+    </div>
+  </section>
+
+  <!-- ================= TWO MARKETS ================= -->
+  <section class="section section--band" id="markets">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="home.markets_eyebrow">Two markets live</span>
+        <h2 data-i18n="home.markets_title">Starting from Hong Kong and Thailand</h2>
+        <p data-i18n="home.markets_lede">One platform, two launch markets. Advertisers buy across both; landlords register locations in either. Availability, pricing, proof of play and settlement work the same way in each.</p>
+      </div>
+      <div class="grid grid--2" id="homeMarkets"></div>
+    </div>
+  </section>
+
+  <!-- ================= REFERENCE PLATFORMS ================= -->
+  <section class="section section--band" id="references">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="home.refs_eyebrow">Industry reference platforms</span>
+        <h2 data-i18n="home.refs_title">The advertiser experience we benchmark against</h2>
+        <p data-i18n="home.refs_lede">3dNakedEye applies the console logic advertisers already know to verified local screens and hologram displays.</p>
+      </div>
+      <div class="grid grid--3" id="homeRefs"></div>
+      <p class="tiny muted" style="margin-top:14px" data-i18n="home.refs_note">These are independent third-party platforms shown for reference.</p>
+    </div>
+  </section>
+
+  <!-- ================= AI STUDIO ================= -->
+  <section class="section">
+    <div class="wrap grid grid--2" style="align-items:center;gap:36px">
+      <div>
+        <span class="eyebrow" data-i18n="studio.eyebrow">AI Creative Studio</span>
+        <h2 data-i18n="studio.title">From two product photos to a hologram-ready campaign</h2>
+        <p data-i18n="studio.lede">Give the studio your logo, product information, promotion, preferred style and call to action. It returns channel-ready versions, hologram-compatible animation and multilingual copy — then checks them against the device rules before you book.</p>
+        <ul class="tag-list" style="margin:14px 0 20px">
+          <li class="chip" data-i18n="studio.out_static">Static ads</li>
+          <li class="chip" data-i18n="studio.out_social">Vertical social video</li>
+          <li class="chip" data-i18n="studio.out_holo">Hologram animation</li>
+          <li class="chip" data-i18n="studio.out_cutout">Product cut-outs</li>
+          <li class="chip" data-i18n="studio.out_subs">Multilingual subtitles</li>
+          <li class="chip" data-i18n="studio.out_voice">Voice-over</li>
+          <li class="chip" data-i18n="studio.out_qr">QR landing pages</li>
+          <li class="chip" data-i18n="studio.out_versions">Per-location versions</li>
+        </ul>
+        <a class="btn btn--primary" href="studio.html" data-i18n="studio.cta">Open the AI Studio</a>
+      </div>
+      <div class="studio-output">
+        <div class="preview-frame">
+          <div class="preview-frame__device preview-frame__device--square">
+            <div class="preview-canvas">
+              <div>
+                <div class="pv-brand" data-i18n="studio.mock_brand">Your brand</div>
+                <div class="pv-head" data-i18n="studio.mock_head">Hologram-ready hero frame</div>
+                <div class="pv-sub" data-i18n="studio.mock_sub">Square 1:1 · pure black background · 10–30 s loop</div>
+                <span class="pv-cta" data-i18n="studio.mock_cta">Scan to redeem</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card--tight">
+          <ul class="checklist" id="homeChecklist"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEASUREMENT + MODELS ================= -->
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="measure.eyebrow">Measurement framework</span>
+        <h2 data-i18n="measure.title">Three reporting levels, so nobody over-promises "views"</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <span class="pill pill--ok" data-i18n="measure.verified">Verified delivery</span>
+          <ul class="kpi-list" style="margin-top:14px">
+            <li><span data-i18n="measure.v1">Number of plays</span><b data-i18n="measure.v1b">Device log</b></li>
+            <li><span data-i18n="measure.v2">Playback duration &amp; completion</span><b data-i18n="measure.v2b">Device log</b></li>
+            <li><span data-i18n="measure.v3">Active devices &amp; campaign uptime</span><b data-i18n="measure.v3b">Heartbeat</b></li>
+            <li><span data-i18n="measure.v4">Locations and time slots</span><b data-i18n="measure.v4b">Scheduler</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill pill--info" data-i18n="measure.exposure">Estimated exposure</span>
+          <ul class="kpi-list" style="margin-top:14px">
+            <li><span data-i18n="measure.e1">Venue footfall</span><b data-i18n="measure.e1b">Modelled</b></li>
+            <li><span data-i18n="measure.e2">Estimated audience</span><b data-i18n="measure.e2b">Modelled</b></li>
+            <li><span data-i18n="measure.e3">Visibility multiplier</span><b data-i18n="measure.e3b">Site survey</b></li>
+            <li><span data-i18n="measure.e4">Estimated impressions &amp; frequency</span><b data-i18n="measure.e4b">Modelled</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill pill--warn" data-i18n="measure.engagement">Direct engagement</span>
+          <ul class="kpi-list" style="margin-top:14px">
+            <li><span data-i18n="measure.g1">QR scans / NFC taps</span><b data-i18n="measure.g1b">Measured</b></li>
+            <li><span data-i18n="measure.g2">Landing-page visits</span><b data-i18n="measure.g2b">Measured</b></li>
+            <li><span data-i18n="measure.g3">Coupon claims &amp; redemptions</span><b data-i18n="measure.g3b">Measured</b></li>
+            <li><span data-i18n="measure.g4">Enquiries, leads, attributed sales</span><b data-i18n="measure.g4b">Integrated</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:22px" data-i18n="measure.note">Reporting follows the IAB DOOH measurement guidance: delivery facts and audience estimates are labelled separately, and modelled figures are never presented as measured plays.</div>
+    </div>
+  </section>
+
+  <!-- ================= HOLOGRAM ================= -->
+  <section class="section">
+    <div class="wrap grid grid--2" style="gap:36px;align-items:start">
+      <div>
+        <span class="eyebrow" data-i18n="holo.eyebrow">Proprietary inventory</span>
+        <h2 data-i18n="holo.title">Hologram devices need different creative rules</h2>
+        <p data-i18n="holo.lede">Rotating LED hologram fans are pseudo-volumetric displays: the background must be pure black, the subject must stay inside the safe area, and small text simply will not resolve. The studio checks all of this automatically and converts ordinary artwork into device-compatible animation.</p>
+        <ul class="checklist" id="holoRules"></ul>
+      </div>
+      <div class="card card--flush">
+        <div class="table-wrap">
+          <table class="data">
+            <caption class="sr-only" data-i18n="holo.spec_caption">Device comparison</caption>
+            <thead><tr>
+              <th data-i18n="holo.spec_item">Item</th>
+              <th>3DNE-P30S</th><th>3DNE-P65YD</th>
+            </tr></thead>
+            <tbody>
+              <tr><td data-i18n="holo.spec_diameter">Screen diameter</td><td>28 cm</td><td>65 cm</td></tr>
+              <tr><td data-i18n="holo.spec_position">Positioning</td><td data-i18n="holo.spec_p30s_pos">Entry / desktop</td><td data-i18n="holo.spec_p65_pos">Professional / venue</td></tr>
+              <tr><td data-i18n="holo.spec_view">Recommended viewing distance</td><td>0.5–2 m</td><td>1.5–5 m</td></tr>
+              <tr><td data-i18n="holo.spec_scene">Typical placement</td><td data-i18n="holo.spec_p30s_scene">Counter, window, small shop, event booth</td><td data-i18n="holo.spec_p65_scene">Mall atrium, exhibition, stage, flagship</td></tr>
+              <tr><td data-i18n="holo.spec_install">Installation</td><td data-i18n="holo.spec_p30s_install">Desktop / bracket, self-install</td><td data-i18n="holo.spec_p65_install">Hanging or floor stand + safety cable</td></tr>
+              <tr><td data-i18n="holo.spec_price">Reference unit price</td><td>HK$1,280</td><td>HK$6,330</td></tr>
+              <tr><td data-i18n="holo.spec_formats">Supported files</td><td colspan="2">MP4 (H.264) · AVI · MOV · GIF · JPG · PNG</td></tr>
+              <tr><td data-i18n="holo.spec_loop">Recommended loop</td><td colspan="2" data-i18n="holo.spec_loop_v">10–30 s, square 1:1, black background</td></tr>
+              <tr><td data-i18n="holo.spec_duty">Duty cycle</td><td colspan="2" data-i18n="holo.spec_duty_v">8–10 h continuous, then ~30 min rest; 30 cm clearance</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card__foot card card--tight" style="border:0;background:transparent">
+          <p class="tiny muted" data-i18n="holo.spec_note">Specifications summarised from the 3DNE-P30S / 3DNE-P65YD FAQ. Prices are reference only — batch, rental and event packages are quoted separately. Fully specified technical sheets (resolution, brightness, power, weight) are provided on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVENUE SHARE ================= -->
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="share.eyebrow">Transparent economics</span>
+        <h2 data-i18n="share.title">Where every HK$10,000 of campaign spend goes</h2>
+        <p data-i18n="share.lede">The split is configurable per landlord contract: it depends on whether the platform supplies the device free of charge, sells it, or charges a monthly service fee.</p>
+      </div>
+      <div class="grid grid--2" style="align-items:center">
+        <div class="card" id="shareDonut"></div>
+        <div>
+          <ul class="kpi-list">
+            <li><span data-i18n="share.landlord">Landlord / location owner</span><b>20%–40%</b></li>
+            <li><span data-i18n="share.platform">Platform media &amp; technology fee</span><b>35%–50%</b></li>
+            <li><span data-i18n="share.ai">AI content production fee</span><b>10%–25%</b></li>
+            <li><span data-i18n="share.sales">Sales partner commission</span><b>5%–15%</b></li>
+            <li><span data-i18n="share.processing">Payment processing</span><b data-i18n="share.processing_v">Deducted separately</b></li>
+          </ul>
+          <p class="small muted" style="margin-top:16px" data-i18n="share.note">Default model: landlord 35% · platform 45% · AI production 15% · sales partner 5%. Adjust it live on the pricing page.</p>
+          <a class="btn btn--ghost" href="pricing.html" data-i18n="share.cta">Open the revenue-share calculator</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ROADMAP ================= -->
+  <section class="section">
+    <div class="wrap grid grid--2" style="gap:36px;align-items:start">
+      <div>
+        <span class="eyebrow" data-i18n="road.eyebrow">Roadmap</span>
+        <h2 data-i18n="road.title">Pilot first, then marketplace, then programmatic</h2>
+        <p data-i18n="road.lede">Real-time bidding is deliberately excluded from v1. Auctions, bid requests, floor prices, pacing and fraud controls add complexity that a pilot network does not need.</p>
+        <div class="quote-box" style="margin-top:18px">
+          <p style="color:var(--ink);font-size:1.05rem;margin:0" data-i18n="road.positioning">"An easy AI-powered OOH marketplace where businesses create advertising content, book verified local screens and hologram displays, pay online and measure results — while landlords earn recurring advertising revenue."</p>
+        </div>
+      </div>
+      <ol class="timeline" id="roadmap"></ol>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="card card--glow row row--between" style="gap:22px;padding:30px">
+        <div>
+          <h2 style="margin:0 0 6px" data-i18n="cta.title">Start with one location — or list one</h2>
+          <p style="margin:0" data-i18n="cta.lede">Advertisers can book in minutes. Landlords keep control of pricing, content rules and scheduling.</p>
+        </div>
+        <div class="row">
+          <a class="btn btn--primary btn--lg" href="marketplace.html" data-i18n="hero.cta_browse">Browse advertising locations</a>
+          <a class="btn btn--ghost btn--lg" href="landlord.html#register" data-i18n="hero.cta_list">List your location</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="row" style="margin-bottom:10px">
+          <span class="avatar">AS</span>
+          <strong data-brand>3dNakedEye</strong>
+        </div>
+        <p class="small" data-i18n="footer.blurb">AI OOH Marketplace for screens, hologram displays and partner venues. Independent of any walled garden: the platform does not own media inventory, so inventory is priced and reported on its own merits.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.platform">Platform</h4>
+        <ul>
+          <li><a href="marketplace.html" data-i18n="nav.marketplace">Marketplace</a></li>
+          <li><a href="studio.html" data-i18n="nav.studio">AI Studio</a></li>
+          <li><a href="pricing.html" data-i18n="nav.pricing">Pricing &amp; models</a></li>
+          <li><a href="docs.html" data-i18n="nav.docs">Platform &amp; API</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.parties">For each party</h4>
+        <ul>
+          <li><a href="advertiser.html" data-i18n="nav.advertiser">Advertiser portal</a></li>
+          <li><a href="landlord.html" data-i18n="nav.landlord">Landlord portal</a></li>
+          <li><a href="operator.html" data-i18n="nav.operator">Operator dashboard</a></li>
+          <li><a href="checkout.html" data-i18n="footer.cart">Booking &amp; payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <ul>
+          <li><span data-contact="email">hello@3dnakedeye.example</span></li>
+          <li><span data-contact="phone">+852 3000 0000</span></li>
+          <li><span data-contact="address">Hong Kong SAR</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+      <span data-i18n="footer.disclaimer">Hologram specifications referenced from the 3DNE-P30S / 3DNE-P65YD product FAQ.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+<script src="assets/js/page-home.js"></script>
+</body>
+</html>

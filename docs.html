@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform architecture, data model, API, LBS, payments and AI service | 3dNakedEye</title>
+<meta name="description" content="Technical documentation for the 3dNakedEye AI OOH marketplace: platform components, inventory and proof-of-play data model, API surface, location-based services, payment rails (Stripe, PayPal, crypto, local), the DeepSeek AI service, measurement framework and roadmap.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg><span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap section prose">
+  <div class="section-head">
+    <span class="eyebrow" data-i18n="docs.eyebrow">Platform &amp; API</span>
+    <h1 data-i18n="docs.title">How the marketplace is put together</h1>
+    <p class="lede" data-i18n="docs.lede">A responsive web application, two self-service portals, one operator console, an AI creative service, a location-based inventory layer and a device network. Everything hangs off one structured inventory record — the same record the advertiser books and the device plays.</p>
+  </div>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section>
+    <h2 data-i18n="docs.arch">1. Platform structure</h2>
+    <p data-i18n="docs.arch_body">Each request travels the same path as a media buy: inventory → creative → approval → payment → scheduling → playback → proof → settlement.</p>
+    <div class="flow" style="margin:18px 0">
+      <div class="flow__node" data-i18n="docs.node_adv">Advertiser portal<span data-i18n="docs.node_adv_s">Campaign, creative, payment</span></div>
+      <div class="flow__node" data-i18n="docs.node_ll">Landlord portal<span data-i18n="docs.node_ll_s">Inventory, approvals, earnings</span></div>
+      <div class="flow__node" data-i18n="docs.node_mkt">Marketplace &amp; pricing<span data-i18n="docs.node_mkt_s">Availability, floor price, SOV</span></div>
+      <div class="flow__node" data-i18n="docs.node_ai">AI creative service<span data-i18n="docs.node_ai_s">Copy, video, hologram spec</span></div>
+      <div class="flow__node" data-i18n="docs.node_ops">Approval, payment, scheduling<span data-i18n="docs.node_ops_s">Moderation, gateway, CMS</span></div>
+      <div class="flow__node" data-i18n="docs.node_dev">Device network<span data-i18n="docs.node_dev_s">Players, heartbeat, play log</span></div>
+      <div class="flow__node" data-i18n="docs.node_rep">Proof of play &amp; reporting<span data-i18n="docs.node_rep_s">Verified, modelled, engaged</span></div>
+    </div>
+    <div class="grid grid--3">
+      <div class="card"><h3 data-i18n="docs.comp_title">Components</h3>
+        <ul class="kpi-list" id="docsComponents"></ul></div>
+      <div class="card"><h3 data-i18n="docs.stack_title">Suggested stack</h3>
+        <ul class="kpi-list" id="docsStack"></ul></div>
+      <div class="card"><h3 data-i18n="docs.nonfunc_title">Non-functional requirements</h3>
+        <ul class="kpi-list" id="docsNonFunc"></ul></div>
+    </div>
+  </section>
+
+  <!-- ============ DATA MODEL ============ -->
+  <section>
+    <h2 data-i18n="docs.model">2. Data model</h2>
+    <p data-i18n="docs.model_body">An advertising opportunity is structured inventory, never a free-text listing. Six tables carry the transaction.</p>
+    <div class="table-wrap" style="margin:18px 0"><table class="data" id="docsTables"></table></div>
+    <h3 data-i18n="docs.inv_title">Inventory record (location × device)</h3>
+    <div class="table-wrap"><table class="data data--compact" id="docsInventory"></table></div>
+  </section>
+
+  <!-- ============ API ============ -->
+  <section>
+    <h2 data-i18n="docs.api">3. API surface</h2>
+    <p data-i18n="docs.api_body">One REST surface for the portals, the device players and future DSP/SSP connections. Booking is a single idempotent call so a retried payment can never double-book a loop.</p>
+    <div class="table-wrap"><table class="data" id="docsApi"></table></div>
+    <h3 data-i18n="docs.api_example">Booking request</h3>
+    <pre class="panel" style="overflow:auto"><code>POST /v1/bookings
+{
+  "advertiser_id": "adv_10231",
+  "campaign": { "objective": "coupon", "start": "2026-10-01", "days": 14 },
+  "lines": [
+    { "location_id": "LC-1042", "device_ids": ["DV-1042-A"], "sov": 50 },
+    { "location_id": "LC-5104", "device_ids": ["DV-5104-A"], "sov": 50 }
+  ],
+  "creative": { "asset_id": "as_9f21", "form": "hologram", "languages": ["zh-HK", "en"] },
+  "ai_studio": { "enabled": true, "hologram_conversion": true },
+  "payment": { "provider": "stripe", "method": "card" },
+  "idempotency_key": "bk_8f2c1a"
+}
+→ 201 { "booking_id": "BK-7F21", "status": "in_review",
+        "total": 11900, "approvals": ["AP-3001"], "invoice": "INV-2026-1042" }</code></pre>
+    <p class="small muted" data-i18n="docs.api_note">Proof of play is exposed per device and per campaign, with a signed export for agencies, and the DOOH fields map onto the OpenRTB DOOH representation when the platform is ready for programmatic buyers.</p>
+  </section>
+
+  <!-- ============ AI SERVICE ============ -->
+  <section>
+    <h2 data-i18n="docs.ai">4. The AI creative service (DeepSeek)</h2>
+    <p data-i18n="docs.ai_body">The studio is a thin orchestration layer over a hosted LLM plus an image/video pipeline. In this build the studio runs in demo mode by default; switch LG_CONFIG.ai.mode to proxy and run the bundled server to use a real DeepSeek API key.</p>
+
+    <h3 data-i18n="docs.ds_get">Getting a DeepSeek API key</h3>
+    <ol class="steps">
+      <li><h4 data-i18n="docs.ds_s1">Register at the DeepSeek platform</h4>
+        <p data-i18n="docs.ds_s1_d">Create an account at platform.deepseek.com (the API platform, not the chat app). Sign in with email or phone.</p></li>
+      <li><h4 data-i18n="docs.ds_s2">Verify and open the API keys page</h4>
+        <p data-i18n="docs.ds_s2_d">Complete any identity checks the platform requests, then create a key under API keys. Copy it once — it is shown in full only at creation.</p></li>
+      <li><h4 data-i18n="docs.ds_s3">Top up the balance — yes, the API is paid</h4>
+        <p data-i18n="docs.ds_s3_d">The API is pay-as-you-go against a prepaid balance. Usage is deducted from the topped-up balance, and from any granted promotional balance first when both exist. There is no permanently free production tier, so budget a small top-up to test.</p></li>
+      <li><h4 data-i18n="docs.ds_s4">Call the API</h4>
+        <p data-i18n="docs.ds_s4_d">OpenAI-compatible base URL api.deepseek.com; Anthropic-format base URL api.deepseek.com/anthropic. Keep the key server-side.</p></li>
+      <li><h4 data-i18n="docs.ds_s5">Watch spend, prefer off-peak</h4>
+        <p data-i18n="docs.ds_s5_d">Off-peak rates are half of peak rates. Peak hours are 01:00–04:00 and 06:00–10:00 UTC, Monday to Friday, excluding Chinese public holidays.</p></li>
+    </ol>
+
+    <h3 data-i18n="docs.ds_models">Models and list prices</h3>
+    <div class="table-wrap"><table class="data" id="docsDsPrices"></table></div>
+    <p class="small muted" style="margin-top:10px" data-i18n="docs.ds_prices_note">Prices are per 1M tokens and were correct at the time of writing — always confirm on the official pricing page, which also lists context length, concurrency limits and current model names. Charges = tokens × price.</p>
+
+    <h3 data-i18n="docs.ds_use">How the studio uses it</h3>
+    <ul>
+      <li data-i18n="docs.ds_u1">Structured brief in, strict JSON out: headline, sub, CTA variants per language, subtitle lines, voice-over script and storyboards.</li>
+      <li data-i18n="docs.ds_u2">A deterministic hologram rule-set validates the result: square 1:1, pure black background, safe area, 10–30 s loop, no small text.</li>
+      <li data-i18n="docs.ds_u3">Image and video work (cut-outs, black-background conversion, encoding) runs in a separate rendering queue, not in the LLM call.</li>
+      <li data-i18n="docs.ds_u4">Every AI-generated asset is stored with prompt, model, version and reviewer decision for audit and disclosure.</li>
+    </ul>
+
+    <h4 data-i18n="docs.ds_proxy">Server-side proxy (never ship a key to the browser)</h4>
+    <pre class="panel" style="overflow:auto"><code>// server/deepseek-proxy.mjs  —  node server/deepseek-proxy.mjs
+// export DEEPSEEK_API_KEY=sk-...  then set LG_CONFIG.ai.mode = 'proxy'
+// in assets/js/config.js
+
+const upstream = await fetch('https://api.deepseek.com/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}`
+  },
+  body: JSON.stringify({
+    model: 'deepseek-flash',            // or 'deepseek-v4-pro'
+    messages: [
+      { role: 'system', content: 'You are a Hong Kong OOH creative director. Reply with JSON only.' },
+      { role: 'user', content: prompt }
+    ],
+    response_format: { type: 'json_object' },
+    temperature: 1.0,
+    max_tokens: 1400
+  })
+});
+const data = await upstream.json();</code></pre>
+    <div class="note" data-i18n="docs.ds_cost">Cost control: cap tokens per brief, cache generated variants per brief and language pair, keep a per-advertiser monthly AI budget, and show AI spend beside media spend in the operator console — which is exactly how the revenue split separates the AI production fee from the media fee.</div>
+  </section>
+
+  <!-- ============ MEASUREMENT ============ -->
+  <section>
+    <h2 data-i18n="docs.measure">5. Measurement framework</h2>
+    <p data-i18n="docs.measure_body">Three tiers, always labelled. This structure follows the IAB DOOH measurement guidance: delivery facts are separated from audience estimates, and modelled numbers are never relabelled as plays.</p>
+    <div class="table-wrap"><table class="data" id="docsMeasure"></table></div>
+    <div class="note note--warn" style="margin-top:16px" data-i18n="docs.measure_note">Never promise exact "views" without sensors or verified third-party data. If computer-vision counting is added later, it must process on-device, retain no identifying data, and be disclosed on the creative and in the venue.</div>
+  </section>
+
+  <!-- ============ DEVICE + HOLOGRAM ============ -->
+  <section>
+    <h2 data-i18n="docs.device">6. Playback, devices and hologram rules</h2>
+    <div class="grid grid--2">
+      <div class="card"><h3 data-i18n="docs.dp_title">What every player reports</h3>
+        <ul class="kpi-list" id="docsPlayer"></ul></div>
+      <div class="card"><h3 data-i18n="docs.holo_title">Hologram-specific checks</h3>
+        <ul class="kpi-list" id="docsHolo"></ul></div>
+    </div>
+    <p class="small muted" style="margin-top:14px" data-i18n="docs.device_note">Rotating LED fans are pseudo-volumetric: black pixels emit no light, so a black background is what produces the floating image. Small text will not resolve, white backgrounds destroy the illusion, and the fan needs 8–10 hours of running followed by roughly 30 minutes of rest with at least 30 cm of clearance.</p>
+  </section>
+
+  <!-- ============ ROADMAP + COMPLIANCE ============ -->
+  <section>
+    <h2 data-i18n="docs.roadmap">7. Roadmap and scope discipline</h2>
+    <div class="table-wrap"><table class="data" id="docsRoadmap"></table></div>
+    <h3 data-i18n="docs.compliance">8. Compliance, privacy and content policy</h3>
+    <ul>
+      <li data-i18n="docs.cmp1">Regulated categories (medical claims, financial products, tobacco/vaping, alcohol, gambling) require evidence of approval and venue consent before scheduling.</li>
+      <li data-i18n="docs.cmp2">Every creative must be lawful, cleared for third-party rights (music, fonts, likeness, trademarks) and consistent with venue restrictions.</li>
+      <li data-i18n="docs.cmp3">QR and NFC landing pages that collect personal data must publish a collection-purpose statement and follow the Personal Data (Privacy) Ordinance in Hong Kong; coupon data is stored pseudonymously.</li>
+      <li data-i18n="docs.cmp4">Noise, light spill and operating-hour rules are enforced by the scheduler, including mandatory rest periods and dimming at night.</li>
+      <li data-i18n="docs.cmp5">AI-generated advertising is disclosed to the operator during moderation, and AI assets keep a prompt and model audit trail.</li>
+      <li data-i18n="docs.cmp6">People-counting, if ever deployed, stays on-device, keeps no images and no identifiers, and is disclosed at the venue.</li>
+    </ul>
+  </section>
+
+  <!-- ============ LBS ============ -->
+  <section id="lbs">
+    <h2 data-i18n="docs.lbs">9. Location-based services and availability</h2>
+    <p data-i18n="docs.lbs_body">Inventory is geospatial: every location carries WGS-84 coordinates, so the marketplace can answer the two questions a rate card cannot — what is near my shop, and what is actually free for my dates.</p>
+    <div class="grid grid--3">
+      <div class="card"><h3 data-i18n="docs.lbs_st1">Availability states</h3>
+        <ul class="checklist" id="docsAvailStates"></ul>
+      </div>
+      <div class="card"><h3 data-i18n="docs.lbs_st2">Proximity search</h3>
+        <ul class="kpi-list" id="docsLbsList"></ul>
+      </div>
+      <div class="card"><h3 data-i18n="docs.lbs_st3">Privacy and resilience</h3>
+        <ul class="kpi-list" id="docsLbsPrivacy"></ul>
+      </div>
+    </div>
+    <div class="grid grid--2" style="margin-top:18px">
+      <div class="card">
+        <h3 data-i18n="lbs.def_title">LBS = Location-Based Services</h3>
+        <p class="small" data-i18n="lbs.data_title">How the position is established</p>
+        <ul class="kpi-list" id="docsLbsSources"></ul>
+      </div>
+      <div class="card">
+        <h3 data-i18n="docs.lbs_pp">Pull and push, in practice</h3>
+        <ul class="kpi-list" id="docsLbsPullPush"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAYMENTS ============ -->
+  <section id="payments">
+    <h2 data-i18n="docs.pay">10. Payments and settlement</h2>
+    <p data-i18n="docs.pay_body">Four rails, one invoice. The advertiser pays in HKD; the provider fee is charged on top of media value and is never taken out of the landlord share.</p>
+    <div class="table-wrap"><table class="data" id="docsPayTable"></table></div>
+    <div class="grid grid--2" style="margin-top:18px">
+      <div class="card"><h3 data-i18n="docs.pay_flow">Payment flow</h3>
+        <ol class="steps" id="docsPayFlow"></ol>
+      </div>
+      <div class="card"><h3 data-i18n="docs.pay_rules">Rules that keep it safe</h3>
+        <ul class="kpi-list" id="docsPayRules"></ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px" data-i18n="docs.pay_note">Crypto is quoted in coin units with a short rate lock and a volatility buffer, then settled to HKD on confirmation so landlord payouts stay in one currency. Card data never reaches 3dNakedEye servers: Stripe collects it and returns a PaymentIntent.</div>
+  </section>
+
+  <!-- ============ VIDEO + LOCALISATION ============ -->
+  <section id="video">
+    <h2 id="locales" data-i18n="docs.vid">11. Explainer video and localisation</h2>
+    <p data-i18n="docs.vid_body">The explainer is an animated, chaptered player with narration and subtitles in every built-in language, so one asset serves an advertiser pitch, a landlord pitch and a sales deck. It can be replaced by your own footage without touching the rest of the site.</p>
+    <div class="grid grid--2">
+      <div class="card"><h3 data-i18n="docs.vid_swap">Publishing your own video</h3>
+        <ul class="kpi-list" id="docsVidSwap"></ul>
+      </div>
+      <div class="card"><h3 data-i18n="docs.loc_title">Three built-in languages, plus Google Translate</h3>
+        <ul class="kpi-list" id="docsLocale"></ul>
+      </div>
+    </div>
+    <div class="grid grid--2" style="margin-top:16px">
+      <div class="card"><h3 data-i18n="docs.loc_gt">Machine translation</h3>
+        <ul class="kpi-list">
+          <li><span data-i18n="docs.loc_gt">Machine translation</span><b data-i18n="docs.loc_gt_v">ja · ko · vi · ไทย · 100+</b></li>
+          <li><span data-i18n="gt.quick">Quick machine translation</span>
+            <b id="docsQuickLangs"></b></li>
+          <li><span data-i18n="gt.reset">Show original language</span>
+            <b><code>?gt=ja</code> · <a href="index.html?gt=ko">?gt=ko</a></b></li>
+        </ul>
+      </div>
+      <div class="card"><h3 data-i18n="docs.loc_channels">Messaging channels</h3>
+        <ul class="kpi-list">
+          <li><span>WhatsApp</span><b data-contact="phone">+852 9739 8018</b></li>
+          <li><span>LINE</span><b id="docsLineId">—</b></li>
+          <li><span data-i18n="contact.wechat">WeChat ID</span><b id="docsWechatId">—</b></li>
+        </ul>
+      </div>
+    </div>
+    <pre class="panel" style="overflow:auto;margin-top:16px"><code>// assets/js/config.js — three ways to publish the explainer
+video: {
+  mode: 'builtin',                  // animated four-language player in video.html
+  // mode: 'file',    src: 'assets/video/3dNakedEye-explainer.mp4', poster: 'assets/img/poster.jpg',
+  // mode: 'youtube', youtubeId: 'XXXXXXXXXXX',
+  durationSec: 146,
+  voiceOver: true,                  // browser speech narration; 繁體中文 always uses a Cantonese voice
+  references: [ /* curated third-party DSP / DOOH videos */ ]
+}</code></pre>
+  </section>
+
+  <!-- ============ MARKETS ============ -->
+  <section id="markets">
+    <h2 data-i18n="docs.markets">12. Markets and coverage</h2>
+    <p data-i18n="docs.markets_body">Two markets run on one platform today: Hong Kong and Thailand. Each market carries its own districts, landmarks, map projection bounds and settlement currency, while inventory, pricing and proof of play use a single data model.</p>
+    <div class="table-wrap"><table class="data" id="docsMarkets"></table></div>
+  </section>
+
+  <!-- ============ ADS MANAGER + AUTOMATION ============ -->
+  <section id="console">
+    <h2 data-i18n="docs.console">13. Advertiser console and email automation</h2>
+    <p data-i18n="docs.console_body">The advertiser console borrows the column logic advertisers already know from Meta Ads Manager and Google Ads — delivery state, budget, spend, verified plays, modelled impressions, QR clicks, CTR, CPM, conversions, cost per conversion and a comparison against the platform benchmark — while the notification engine turns every handover into an email in the recipient language.</p>
+    <div class="grid grid--2">
+      <div class="card"><h3 data-i18n="docs.console_ads">Ads Manager</h3>
+        <ul class="kpi-list" id="docsConsole"></ul></div>
+      <div class="card"><h3 data-i18n="docs.console_auto">Automation</h3>
+        <ul class="kpi-list" id="docsAutomation"></ul></div>
+    </div>
+    <div class="table-wrap" style="margin-top:18px"><table class="data" id="docsTriggers"></table></div>
+  </section>
+
+  <!-- ============ ACCOUNTS / MEMBERSHIP / FRONT OF SITE ============ -->
+  <section id="portal">
+    <h2 data-i18n="docs.portal">14. Accounts, membership and the two dashboards</h2>
+    <p data-i18n="docs.portal_body">Advertisers and landlords share one sign-in and each lands on their own dashboard.</p>
+    <div class="grid grid--2">
+      <div class="card"><h3 data-i18n="docs.portal_a1">Sign-in roles</h3>
+        <ul class="kpi-list">
+          <li><span data-i18n="docs.portal_a1">Sign-in roles</span><b data-i18n="docs.portal_a1_v">advertiser · landlord · operator</b></li>
+          <li><span data-i18n="docs.portal_a2">Session storage</span><b data-i18n="docs.portal_a2_v">browser → server</b></li>
+          <li><span data-i18n="docs.portal_a3">Membership tiers</span><b data-i18n="docs.portal_a3_v">four tiers</b></li>
+          <li><span data-i18n="docs.portal_a4">Dashboard guard</span><b data-i18n="docs.portal_a4_v">role-gated</b></li>
+        </ul>
+      </div>
+      <div class="card"><h3 data-i18n="mem.title">Membership</h3>
+        <ul class="kpi-list">
+          <li><a href="login.html" data-i18n="auth.title">Sign in to your dashboard</a></li>
+          <li><a href="membership.html" data-i18n="nav.membership">Membership</a></li>
+          <li><a href="advertiser.html" data-i18n="login.adv_title">Advertiser dashboard</a></li>
+          <li><a href="landlord.html" data-i18n="login.ll_title">Landlord dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="front">
+    <h2 data-i18n="docs.front">15. FAQ, enquiry and the AI assistant</h2>
+    <p data-i18n="docs.front_body">The FAQ corpus is also the assistant's knowledge base.</p>
+    <div class="grid grid--2">
+      <div class="card"><h3 data-i18n="docs.front_a1">FAQ corpus</h3>
+        <ul class="kpi-list">
+          <li><span data-i18n="docs.front_a1">FAQ corpus</span><b id="docsFaqCount">—</b></li>
+          <li><span data-i18n="docs.front_a2">Assistant</span><b data-i18n="docs.front_a2_v">knowledge base + DeepSeek</b></li>
+          <li><span data-i18n="docs.front_a3">Enquiry pipeline</span><b data-i18n="docs.front_a3_v">browser → server .eml → WhatsApp</b></li>
+          <li><span data-i18n="docs.front_a4">Contact channels</span><b data-contact="email">commercialisation.ai@gmail.com</b></li>
+        </ul>
+      </div>
+      <div class="card"><h3 data-i18n="faq.title">FAQ</h3>
+        <ul class="kpi-list">
+          <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="faq.html?chat=1&amp;q=What%20is%20a%20hologram%20fan" data-i18n="faq.ask_ai">Ask the assistant</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="whatsapp">
+    <h2 data-i18n="docs.wa">16. WhatsApp Business and contact channels</h2>
+    <p data-i18n="docs.wa_body">One place configures every channel: config.js.</p>
+    <div class="grid grid--2">
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.wa_a1">Business number</span><b data-contact="phone">+852 9739 8018</b></li>
+        <li><span data-i18n="docs.wa_a2">Cloud API version</span><b id="docsWaVersion">v21.0</b></li>
+        <li><span data-i18n="docs.wa_a3">Enquiry endpoint</span><b data-i18n="docs.wa_a3_v">POST /api/enquiry</b></li>
+        <li><span data-i18n="docs.wa_a4">Assistant endpoint</span><b data-i18n="docs.wa_a4_v">POST /api/chat</b></li>
+      </ul></div>
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.wa_a5">Social accounts</span><b id="docsSocialCount">—</b></li>
+        <li><span data-i18n="foot.contact">Talk to us</span>
+          <b><a href="contact.html" data-i18n="nav.contact">Contact</a> ·
+             <a href="faq.html" data-i18n="nav.faq">FAQ</a></b></li>
+      </ul></div>
+    </div>
+    <p class="tiny muted" data-i18n="docs.social_ph">Handles are placeholders.</p>
+    <div class="social-grid" id="docsSocial"></div>
+  </section>
+
+  <section id="preview">
+    <h2 data-i18n="docs.pv_title">17. Creative preview and the upload pipeline</h2>
+    <p data-i18n="docs.pv_body">preview.html accepts any file the advertiser has, and decodes it in the browser.</p>
+    <div class="grid grid--2">
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.pv_a1">Accepted input</span><b data-i18n="docs.pv_a1_v">image · video · SVG · GIF · PDF</b></li>
+        <li><span data-i18n="docs.pv_a2">Where decoding happens</span><b data-i18n="docs.pv_a2_v">browser, object URL</b></li>
+      </ul></div>
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.pv_a3">Device simulation</span><b data-i18n="docs.pv_a3_v">5 devices · angle · light · overlays</b></li>
+        <li><span data-i18n="docs.pv_a4">Loop planning</span><b data-i18n="docs.pv_a4_v">share of voice per file</b></li>
+      </ul></div>
+    </div>
+    <div class="row row--wrap" style="margin-top:12px">
+      <a class="btn btn--primary btn--sm" href="preview.html" data-i18n="nav.preview">Preview</a>
+      <a class="btn btn--ghost btn--sm" href="preview.html?demo=1" data-i18n="pv.demo">Try the sample files</a>
+      <a class="btn btn--quiet btn--sm" href="studio.html" data-i18n="nav.studio">AI Studio</a>
+    </div>
+  </section>
+
+  <section id="product-data">
+    <h2 data-i18n="docs.data_title">18. Catalogue, dimensions and the cloud walkthrough</h2>
+    <p data-i18n="docs.data_body">The catalogue, the calculator and the cloud walkthrough are transcribed from the supplier’s own documents. Nothing is estimated: where a document is silent the page says so.</p>
+    <div class="grid grid--2">
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.data_a1">Product catalogue</span><b data-i18n="docs.data_a1_v">25 models · 5 series · matrix builds · accessories</b></li>
+        <li><span data-i18n="docs.data_a2">Dimension calculator</span><b data-i18n="docs.data_a2_v">spacing 0.400–0.710 m · power +20% headroom</b></li>
+      </ul></div>
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.data_a3">Cloud walkthrough</span><b data-i18n="docs.data_a3_v">11 sections · 49 operations · the manual’s own menu order</b></li>
+        <li><span data-i18n="docs.data_a4">Sourcing rule</span><b data-i18n="docs.data_a4_v">catalogue values as published — a dash where the supplier is silent</b></li>
+      </ul></div>
+    </div>
+    <div class="row row--wrap" style="margin-top:12px">
+      <a class="btn btn--primary btn--sm" href="catalog.html" data-i18n="nav.catalog">Product catalogue</a>
+      <a class="btn btn--ghost btn--sm" href="dimension.html" data-i18n="nav.dimension">Dimension calculator</a>
+      <a class="btn btn--quiet btn--sm" href="cloud.html" data-i18n="nav.cloud">Cloud walkthrough</a>
+      <a class="btn btn--quiet btn--sm" href="holobox.html" data-i18n="nav.holobox">Holobox — life-size telepresence</a>
+    </div>
+  </section>
+
+  <section id="affiliate">
+    <h2 data-i18n="docs.af_title">19. The affiliate share-link programme</h2>
+    <p data-i18n="docs.af_body">A tracked link, a cookie window, an attribution rule and a payout. The model is described on affiliate.html, demonstrated in the browser there, and implemented for real in server/affiliate.mjs with the schema in server/schema.sql.</p>
+    <div class="grid grid--2">
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.af_a1">API surface</span><b data-i18n="docs.af_a1_v">register · link · click · convert · stats · ledger · partners · destinations · health</b></li>
+        <li><span data-i18n="docs.af_a2">Schema</span><b data-i18n="docs.af_a2_v">partners · links · clicks · conversions · payouts · fraud_events (+ a daily rollup)</b></li>
+        <li><span data-i18n="docs.af_a3">Attribution</span><b data-i18n="docs.af_a3_v">last click inside the partner’s cookie window (7 / 30 / 90 days)</b></li>
+      </ul></div>
+      <div class="card"><ul class="kpi-list">
+        <li><span data-i18n="docs.af_a4">Refused automatically</span><b data-i18n="docs.af_a4_v">self-referral · duplicate order · click flood · scripted agents · off-site destinations</b></li>
+        <li><span data-i18n="docs.af_a5">Personal data</span><b data-i18n="docs.af_a5_v">no raw IP is stored — a salted SHA-256 hash, a page and a time</b></li>
+        <li><span data-i18n="docs.af_a6">Verified by</span><b data-i18n="docs.af_a6_v">_verify/affiliate-api-test.cjs (67 assertions) and affiliate-probe.html (54)</b></li>
+      </ul></div>
+    </div>
+    <div class="row row--wrap" style="margin-top:12px">
+      <a class="btn btn--primary btn--sm" href="affiliate.html" data-i18n="nav.affiliate">Affiliate share links</a>
+      <a class="btn btn--ghost btn--sm" href="affiliate.html#console" data-i18n="af.b7">The programme, running on a server</a>
+      <a class="btn btn--quiet btn--sm" href="partnership.html" data-i18n="nav.partnership">Partnership</a>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="card card--glow row row--between" style="padding:26px">
+      <div><h2 style="margin:0 0 6px" data-i18n="docs.cta_title">See the transaction end to end</h2>
+        <p style="margin:0" data-i18n="docs.cta_lede">Book a location, generate the creative, pay in the simulated gateway and read the proof-of-play report.</p></div>
+      <div class="row">
+        <a class="btn btn--primary" href="marketplace.html" data-i18n="hero.cta_browse">Browse advertising locations</a>
+        <a class="btn btn--ghost" href="video.html" data-i18n="video.watch">Watch the explainer</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom" style="border:0;margin:0">
+    <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+    <span><a href="https://platform.deepseek.com" rel="noopener">platform.deepseek.com</a> · <a href="https://api-docs.deepseek.com/quick_start/pricing" rel="noopener">DeepSeek API pricing</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+<script src="assets/js/page-docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+From: no-reply@3dnakedeye.example
+To: commercialisation.ai@gmail.com
+Subject: 3dNakedEye enquiry PROBE-HOLOBOX — PROBE-HOLOBOX
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<pre style="font:13px/1.6 ui-monospace,Menlo,Consolas,monospace">New 3dNakedEye enquiry PROBE-HOLOBOX
+
+Name:      PROBE-HOLOBOX
+Company:   —
+Email:     probe@3dnakedeye.example
+Phone:     —
+Role:      —
+Market:    hk
+Interests: holobox
+Device:    —
+Budget:    —
+Timeline:  —
+Channel:   —
+Language:  en
+
+Message:
+PASS — 37/37
+ok   the page renders a heading and a lede
+ok   the headline stats are drawn (4)
+ok   the stats name the panel, the link, the setup and the avatar
+ok   the explainer host exists
+ok   the explainer draws on a canvas
+ok   the canvas is a real drawing surface
+ok   the canvas actually has pixels painted on it
+ok   four chapters are offered
+ok   a play control exists and reports its state
+ok   the explainer is playing on arrival (state exposed for tests)
+ok   no third-party footage is loaded by default
+ok   the caption under the film explains that it is drawn locally
+ok   the explainer can be paused
+ok   clicking chapter 3 activates it
+ok   the chip label follows the chapter
+ok   it can be played again
+ok   three ways to appear are listed
+ok   plug-and-play is stated as five points
+ok   six sectors are tabulated
+ok   ten configuration rows are tabulated
+ok   the configuration table says the figures are confirmed in the quote
+ok   the delivery path is five steps
+ok   two sizes plus rental are offered
+ok   the FAQ block carries four questions
+ok   a FAQ answer is present behind the summary
+ok   the page links to the enquiry form with the Holobox interest
+ok   the page cross-links to the hologram booth
+ok   no raw dictionary key is visible anywhere on the page
+ok   the page never mentions a third-party vendor
+ok   the FAQ page lists the four Holobox questions
+ok   the enquiry form offers the Holobox interest
+ok   the enquiry form offers the Holobox device
+ok   the page re-renders in Traditional Chinese
+ok   the explainer is redrawn after the language switch
+ok   the chapter chips are translated
+ok   the page re-renders in Thai
+ok   the page comes back to English with no key left behind
+
+Received:  2026-09-26T09:46:38.551Z</pre>

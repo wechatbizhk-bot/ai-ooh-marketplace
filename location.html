@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Location detail &amp; booking | 3dNakedEye</title>
+<meta name="description" content="Inspect a verified OOH screen or hologram location: devices, audience estimate, restrictions, availability calendar and instant online pricing.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text"><span class="brand__name" data-brand>3dNakedEye</span><small data-i18n="brand.product">AI OOH Marketplace</small></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main"></nav>
+    <div class="nav__tools">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language"></div>
+      <a class="btn btn--ghost btn--sm cart-link" href="checkout.html" data-i18n-label="nav.cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg><span data-cart-count>0</span>
+      </a>
+      <button class="nav__burger" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-label="nav.menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap section" id="locMain">
+  <nav class="small muted" aria-label="Breadcrumb" style="margin-bottom:14px">
+    <a href="index.html" data-i18n="nav.home">Home</a> /
+    <a href="marketplace.html" data-i18n="nav.marketplace">Marketplace</a> /
+    <span id="crumbName">—</span>
+  </nav>
+
+  <div class="grid grid--sidebar" style="grid-template-columns:minmax(0,1fr) 360px">
+    <div class="stack" id="locBody"></div>
+
+    <!-- ============ BOOKING WIDGET ============ -->
+    <aside class="card" id="bookWidget" style="position:sticky;top:84px">
+      <h3 class="card__title" data-i18n="loc.book_title">Book this location</h3>
+      <p class="tiny muted" data-i18n="loc.book_sub">Instant pricing. Landlord minimum prices and content rules are applied automatically.</p>
+      <div class="form">
+        <div class="form-row--2 form-row">
+          <div class="form-row">
+            <label for="bStart" data-i18n="loc.start">Start date</label>
+            <input type="date" id="bStart">
+          </div>
+          <div class="form-row">
+            <label for="bDays" data-i18n="loc.days">Days</label>
+            <input type="number" id="bDays" min="1" max="90" value="7">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="bSov" data-i18n="loc.sov">Share of voice</label>
+          <select id="bSov">
+            <option value="100" data-i18n="loc.sov100">100% — exclusive loop</option>
+            <option value="50" data-i18n="loc.sov50">50% — shared loop</option>
+            <option value="25" data-i18n="loc.sov25">25% — light presence</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="bSlot" data-i18n="loc.slot">Daypart</label>
+          <select id="bSlot">
+            <option value="all_day" data-i18n="loc.slot_all">All opening hours</option>
+            <option value="breakfast" data-i18n="loc.slot_breakfast">Breakfast (07:00–11:00)</option>
+            <option value="lunch" data-i18n="loc.slot_lunch">Lunch (11:00–15:00)</option>
+            <option value="evening" data-i18n="loc.slot_evening">Evening (17:00–22:00)</option>
+            <option value="weekend" data-i18n="loc.slot_weekend">Weekend only</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend data-i18n="loc.devices">Devices to include</legend>
+          <div class="stack" id="bDevices"></div>
+        </fieldset>
+        <div class="card card--tight" id="bQuote" aria-live="polite"></div>
+        <button class="btn btn--primary btn--block" type="button" id="bAdd" data-i18n="loc.add_booking">Add to booking</button>
+        <button class="btn btn--ghost btn--block" type="button" id="bBookPay" data-i18n="loc.book_pay">Book &amp; pay now</button>
+        <p class="tiny muted" style="margin:0" data-i18n="loc.book_note">Payment is authorised when the campaign is submitted. If the landlord rejects the creative, the media charge is refunded in full.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom" style="border:0;margin:0">
+    <span>© <span id="year">2026</span> <span data-brand>3dNakedEye</span> · <span data-i18n="footer.demo">Demonstration platform — seeded data, simulated payments and simulated device telemetry.</span></span>
+    <span><a href="landlord.html" data-i18n="nav.landlord">Landlord portal</a> · <a href="docs.html" data-i18n="nav.docs">Platform &amp; API</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/nav-data.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.th.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/translate.js"></script>
+<script src="assets/js/notify.js"></script>
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/meganav.js"></script>
+<script src="assets/js/page-auth.js"></script>
+<script src="assets/js/page-location.js"></script>
+</body>
+</html>

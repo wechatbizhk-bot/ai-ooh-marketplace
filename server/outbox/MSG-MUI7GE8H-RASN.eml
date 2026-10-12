@@ -1,0 +1,39 @@
+From: no-reply@3dnakedeye.example
+To: commercialisation.ai@gmail.com
+Subject: 3dNakedEye enquiry PROBE-CHAT — PROBE-CHAT
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<pre style="font:13px/1.6 ui-monospace,Menlo,Consolas,monospace">New 3dNakedEye enquiry PROBE-CHAT
+
+Name:      PROBE-CHAT
+Company:   —
+Email:     probe@adsaas.example
+Phone:     —
+Role:      —
+Market:    hk
+Interests: other
+Device:    —
+Budget:    —
+Timeline:  —
+Channel:   —
+Language:  en
+
+Message:
+PASS — 14/14
+ok   widget mounted on the real page
+ok   starts closed
+ok   launcher opens the panel
+ok   aria-expanded becomes true
+ok   the × button closes the panel
+ok   LG.chat.isOpen() is false after ×
+ok   aria-expanded returns to false
+ok   the host page is untouched (still has its header)
+ok   Escape closes the panel
+ok   a click outside closes the panel
+ok   reopens after closing
+ok   open → close → open keeps working
+ok   a click inside the panel keeps it open
+ok   the new-conversation button still works
+
+Received:  2026-09-26T09:46:33.617Z</pre>

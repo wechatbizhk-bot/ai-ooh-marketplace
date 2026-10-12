@@ -1,0 +1,42 @@
+{
+ "partners": {
+  "PROBEP-407": {
+   "code": "PROBEP-407",
+   "name": "Probe Partners",
+   "email": "probe1790415746025@example.com",
+   "status": "active",
+   "windowDays": 90,
+   "model": {
+    "kind": "pct",
+    "value": 0.08
+   },
+   "payout": {
+    "method": "bank",
+    "detail": null
+   },
+   "signupIpHash": "24161e02af7a33580b6d3d15785b3334d5852f949e1c218b8363620f132bf3a1",
+   "createdAt": 1790415745758
+  },
+  "PROBEP-A26": {
+   "code": "PROBEP-A26",
+   "name": "Probe Partners",
+   "email": "probe1790416029317@example.com",
+   "status": "active",
+   "windowDays": 90,
+   "model": {
+    "kind": "pct",
+    "value": 0.08
+   },
+   "payout": {
+    "method": "bank",
+    "detail": null
+   },
+   "signupIpHash": "24161e02af7a33580b6d3d15785b3334d5852f949e1c218b8363620f132bf3a1",
+   "createdAt": 1790416028786
+  }
+ },
+ "order": [
+  "PROBEP-407",
+  "PROBEP-A26"
+ ]
+}

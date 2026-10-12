@@ -1,0 +1,74 @@
+From: no-reply@3dnakedeye.example
+To: commercialisation.ai@gmail.com
+Subject: 3dNakedEye enquiry PROBE-DATA — PROBE-DATA
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<pre style="font:13px/1.6 ui-monospace,Menlo,Consolas,monospace">New 3dNakedEye enquiry PROBE-DATA
+
+Name:      PROBE-DATA
+Company:   —
+Email:     probe@3dnakedeye.example
+Phone:     —
+Role:      —
+Market:    hk
+Interests: other
+Device:    —
+Budget:    —
+Timeline:  —
+Channel:   —
+Language:  en
+
+Message:
+PASS — 49/49
+ok   the catalogue renders all seven series tables (got 7)
+ok   the P-series table keeps the catalogue shape — 12 spec rows × 7 models
+ok   the comparison table carries 13 rows
+ok   the matrix table carries 13 builds
+ok   twelve accessories and ten family cards are drawn
+ok   the headline model count is computed from the data, not written by hand
+ok   no raw dictionary key is visible on the catalogue
+ok   a figure the supplier does not publish stays a dash
+ok   every family card links to a page that exists
+ok   the calculator draws its ten result cells (got 10)
+ok   the picker opens on a 65 cm class so the picker and the numbers agree
+ok   3 × 2 m resolves to 7 columns × 5 rows × 35 units
+ok   the covered wall is reported as 3.25 × 2.32 m
+ok   the spacing and unit size come from the supplier table
+ok   the fused resolution is 8960 × 6400 px
+ok   the power figure carries 20% headroom
+ok   the viewing distance is the 1.5–3× range
+ok   the content brief is exact (pixels, 1:1, black background, duration)
+ok   the preview draws exactly one tile per unit
+ok   a 1 × 1 m wall on 65 cm units becomes 3 × 3 = 9
+ok   the preview follows the arithmetic
+ok   quantity mode hides the wall inputs and shows the unit count
+ok   12 units lay out as a 3 × 4 grid that holds exactly 12
+ok   the spacing table lists the four catalogue classes
+ok   no raw dictionary key is visible on the calculator
+ok   the manual’s 11 sections are listed (got 11)
+ok   49 operations hang off them (got 49)
+ok   a collapsed section opens on click
+ok   the six-step first-run walkthrough is present
+ok   no raw dictionary key is visible on the cloud page
+ok   the Technology menu offers catalog.html
+ok   the Technology menu offers dimension.html
+ok   the Technology menu offers cloud.html
+ok   the Platform menu offers the cloud walkthrough
+ok   the footer site map exists
+ok   the footer site map links to all three as well
+ok   the catalogue re-renders in Traditional Chinese
+ok   the catalogue leaves no raw key in Traditional Chinese
+ok   the catalogue re-renders in Thai
+ok   the catalogue comes back to English
+ok   the calculator re-renders in Traditional Chinese
+ok   the calculator leaves no raw key in Traditional Chinese
+ok   the calculator re-renders in Thai
+ok   the calculator comes back to English
+ok   the cloud re-renders in Traditional Chinese
+ok   the cloud leaves no raw key in Traditional Chinese
+ok   the cloud re-renders in Thai
+ok   the cloud comes back to English
+ok   the three pages keep their English headings after the round trip (Every model, every figure, from the manufacturer catalogue / Work out the build before you order it / Cloud platform: the operating walkthrough)
+
+Received:  2026-09-26T09:46:09.187Z</pre>
