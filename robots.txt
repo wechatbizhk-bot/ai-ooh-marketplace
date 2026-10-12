@@ -1,0 +1,5 @@
+# https://commercialisation.ai
+User-agent: *
+Allow: /
+
+Sitemap: https://commercialisation.ai/sitemap.xml
